@@ -1,0 +1,3 @@
+Names: John, Alice, Bob, Emma
+Phones: 1234567890, 9876543210, 5555555555, 8888888888
+Emails: john@example.com, alice@example.com, bob@example.com, emma@example.com
