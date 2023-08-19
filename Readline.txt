@@ -1,0 +1,105 @@
+what is readline ?
+
+Readline Module in Node.js allows the reading of input stream line by line. This module wraps up the process standard output and process standard input objects. The Readline module makes it easier to input and read the output given by the user
+ for this first import this in js file
+
+
+ The Readline module comes with different methods to interact with the user.
+
+Interaction with the user: For the interaction, we will first create an interface for the input and output. For creating an interface:-
+
+its look like this :-
+
+import readline from readline
+ let read = readline.creatInterface(process.stdin ,process.stdout)
+
+ Here, the createInterface() method takes two arguments. The first argument will be for the standard input and the second one will be for reading the standard output.
+
+
+
+
+  . 
+
+  import readline from readline
+ let read = readline.creatInterface(process.stdin ,process.stdout)
+ read.question('what is your age' ,   (age)=>{
+    console.log('your age is ' , + age)
+ })
+
+
+read.question() method is used for asking questions from the user and reading their reply (output). The first parameter is used to ask the question and the second parameter is a callback function that will take the output from the user as the parameter and return it to the console
+
+
+ the Third method is close() the problem is it will not exit the application and it will keep asking for the inputs. To resolve this issue, read.close() method is used. This method will close the interface 
+
+
+ import readline from 'readline';
+
+ let read = readline.createInterface(process.stdin, process.stdout)
+
+ read.question('what is your age', + (age)=>{
+    console.log(your age is + age)
+    read.close()
+ })
+
+
+ We can also use a setPrompt() method is used to set the particular statement to the console. prompt() method for displaying the statement which is set in setPrompt() Method
+
+import readline from 'readline';
+
+ let read = readline.createInterface(process.stdin, process.stdout)
+
+ read.setPrompt(`hello this is priya vyas`)
+ read.prompt()
+
+
+ This code will take input from the user. Now, we need a listener for reading the input from the user and displaying it to the console. For this purpose, Readline Module has a listener method called 'on' that will take two parameters. The first parameter will the event and the second parameter will be a callback function that will return the output to the console.
+
+ import readline from 'readline';
+
+ let read = readline.createInterface(process.stdin, process.stdout)
+
+ read.setPrompt(`hello this is priya vyas and my age is?`)
+ read.prompt()
+
+ read.on('line',(age)=>{
+    console.log( `age recived by user ${age}`)
+    read.close()
+ })
+
+ Here, read.on() method takes the first argument as a line event. This event is invoked whenever the user presses Enter key.
+
+ Events: Along with the listener, readline module also comes with the event’s properties there are various types of events 
+ 
+ close: This event is invoked when either read.close() method is called or when the user presses ctrl + c to close the interface.
+line: This event is invoked whenever the user presses Enter or return keys. This event is called the listener function. 
+
+pause: This event is invoked when the input stream is paused
+ 
+SIGINT: This event is invoked whenever the user press ctrl + c button. If there are no event listeners registered when the SIGINT is invoked, then the pause event will be invoked. For example – 
+
+
+rl.on('SIGINT', () => {
+	rl.question('Exit (y or n)? ', (input) => {
+		if (input.match(/^y(es)?$/i)) { rl.pause(); }
+	});
+});
+
+
+This code will ask the given question if the ctrl + c key is pressed by the user. Here, if the provided input will match with y or yes, then the pause() method will be called on the interface.
+
+SIGTSTP: This event is invoked whenever the user gives ctrl + z input. This input is known as SIGTSTP. If a user does not provide the SIGTSTP input, then the current running process will be sent to the background. For example – 
+
+read.on('SIGTSTP', () => {
+	console.log('SIGTSTP event is invoked.');
+})
+
+
+
+SIGCONT: This event is invoked when a process that was sent to the background using SIGTSTP is again brought back to the front-running process. For example:
+
+read.on('SIGCONT', () => {
+	console.log('SIGCONT event is invoked.');
+	read.prompt();
+})
+

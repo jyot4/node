@@ -5,16 +5,16 @@ import fs from 'fs'
 
 // const file = fs.readFileSync('cc',)
 
-for (let i = 0; i < 5; i++) {
-    fs.readFile('cc' + i + '.txt' ,(err, data) => {
-        if (err) {
-            console.log("this code have error")
-        }
-        else {
-            console.log(data.toString())
-        }
-    })
-}
+// for (let i = 0; i < 5; i++) {
+//     fs.readFile('cc' + i + '.txt' ,(err, data) => {
+//         if (err) {
+//             console.log("this code have error")
+//         }
+//         else {
+//             console.log(data.toString())
+//         }
+//     })
+// }
 
 // fs.readFile("cc.txt",(err, data)=>{
 //     if( err){
